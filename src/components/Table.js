@@ -1,10 +1,6 @@
 import React from "react";
 
 const Table = () => {
-
-    const event = new Date('August 19, 1975 23:15:30 UTC');
-
-    const jsonDate = event.toJSON();
   const headers = [
     "id",
     "comercio",
@@ -171,27 +167,30 @@ const Table = () => {
   return (
     <section>
       <table>
-        <tr>
-          {headers.map((i) => (
-            <th>{i}</th>
-          ))}
-        </tr>
-        {tableData.data.map((i) => (
+        <tbody>
           <tr>
-            <td>{i.id}</td>
-            <td>{i.comercio}</td>
-            <td>{i.cuit}</td>
-            <td>{i.concepto1}</td>
-            <td>{i.concepto2}</td>
-            <td>{i.concepto3}</td>
-            <td>{i.concepto4}</td>
-            <td>{i.concepto5}</td>
-            <td>{i.concepto6}</td>
-            <td>{i.balance_actual}</td>
-            <td>{i.activo ? "Si" : "No"}</td>
-            <td>{i.ultima_venta}</td>
+            {headers.map((i,idx) => (
+              <th key={idx}>{i}</th>
+            ))}
           </tr>
-        ))}
+
+          {tableData.data.map((i) => (
+            <tr key={i.id}>
+              <td>{i.id}</td>
+              <td>{i.comercio}</td>
+              <td>{i.cuit}</td>
+              <td>{i.concepto1}</td>
+              <td>{i.concepto2}</td>
+              <td>{i.concepto3}</td>
+              <td>{i.concepto4}</td>
+              <td>{i.concepto5}</td>
+              <td>{i.concepto6}</td>
+              <td>{i.balance_actual}</td>
+              <td>{i.activo ? "Si" : "No"}</td>
+              <td>{i.ultima_venta}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
 
       <p>
