@@ -29,13 +29,13 @@ const Filters = () => {
   };
 
   const applySearch = () => {
-    const inputParams = `{"$or": [{"id": {"$regex" :"${query}"}}, {"cuit": {"$regex" :"${query}"}}, {"comercio": {"$regex" :"${query}"}}]}`;
-    const activeParams = `,{"active": ${onlyActive}}`;
+    const inputParams = `{"$or": [{"id": {"$regex" :"${query}"}},{"cuit": {"$regex" :"${query}"}},{"comercio": {"$regex" :"${query}"}}]}`;
+    const activeParams = `,{"active":${onlyActive}}`;
     const sortBy0 = sortBy?.length > 0 ? sortBy?.[0] : "";
     const sortBy1 = sortBy?.length > 1 ? sortBy?.[1] : "";
     const sortByParams =
       sortBy0 &&
-      `&h={"$orderby": {"${sortBy0}": 1${sortBy1 ? `, "${sortBy1}": 1` : ""}}}`;
+      `&h={"$orderby": {"${sortBy0}": 1${sortBy1 ? `,"${sortBy1}":1` : ""}}}`;
     url = `${baseURL}?q={"$and": [${inputParams}${
       onlyActive ? activeParams : ""
     }]}${sortByParams}`;
