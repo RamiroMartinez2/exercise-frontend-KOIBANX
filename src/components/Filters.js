@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 
 const baseURL = "https://api.koibanx.com/stores";
+let url;
 
 const Filters = () => {
+
+  // Simulate api call 
+
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then((response) => response.json())
+  //     .then((data) => data);
+  // }, []);
+
   const [query, setQuery] = useState("");
   const [onlyActive, setOnlyActive] = useState();
   const [sortBy, setSortBy] = useState([]);
@@ -26,7 +36,7 @@ const Filters = () => {
     const sortByParams =
       sortBy0 &&
       `&h={"$orderby": {"${sortBy0}": 1${sortBy1 ? `, "${sortBy1}": 1` : ""}}}`;
-    const url = `${baseURL}?q={"$and": [${inputParams}${
+    url = `${baseURL}?q={"$and": [${inputParams}${
       onlyActive ? activeParams : ""
     }]}${sortByParams}`;
     console.log(url);
